@@ -1,0 +1,31 @@
+<%@ jet 
+	imports="
+		org.talend.core.model.process.INode 
+		org.talend.core.model.process.ElementParameterParser
+		org.talend.designer.codegen.config.CodeGeneratorArgument
+	"
+%>
+
+<%
+	CodeGeneratorArgument codeGenArgument = (CodeGeneratorArgument) argument;
+	INode node = (INode)codeGenArgument.getArgument();
+        String cid = node.getUniqueName();	
+%>
+
+                <%=cid%>Process_pt2(globalMap, resourceMap, tos_count_<%=cid%> );
+            } // end resume-if
+        } catch(Exception e) {
+            globalMap.put("<%=cid%>_handleError_pt1", e);
+            <%=cid%>Process_pt2(globalMap, resourceMap, 0 );
+            
+        }
+    } // end method body
+                
+    <%=ElementParameterParser.getValue(node, "__CODE__") %>
+
+    public void <%=cid%>Process_pt2(final java.util.Map<String, Object> globalMap, java.util.Map<String, Object> resourceMap, int tos_count_<%=cid%>) throws TalendException {
+        try {
+            if(globalMap.containsKey("<%=cid%>_handleError_pt1"))
+                throw (Exception) globalMap.get("<%=cid%>_handleError_pt1");
+                
+            if (true) { // resume

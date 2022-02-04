@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>de.cimt.talendcomp</groupId>
+    <artifactId>tDeclare</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+    <name>[talendcomp]  ${artifactId} - ${version}</name>
+    <description>
+        Allows creation of innerclasses and member variables
+    </description>
+    
+    
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/cimt-ag/talendcomp_tDeclare/issues</url>
+    </issueManagement>
+    
+    <scm>
+        <developerConnection>scm:git:https://github.com/cimt-ag/talendcomp_tDeclare.git</developerConnection>
+    </scm>
+    <developers>
+         <developer>
+            <name>Daniel Koch</name>
+            <email>Daniel.Koch@cimt-ag.de</email>
+            <organization>cimt AG</organization>
+            <organizationUrl>https://www.cimt-ag.de</organizationUrl>
+        </developer>
+    </developers>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>de.cimt.talendcomp</groupId>
+                <artifactId>cimt-talendcomp-maven-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <componentBaseDir>target/components/</componentBaseDir>
+                    <copyFromSourceBaseDir>src/main/components</copyFromSourceBaseDir>
+                </configuration>
+                <executions>
+                    
+                    <execution>
+                        <id>tDeclare</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>component</goal>
+                        </goals>
+                        <configuration>
+                            <componentName>tDeclare</componentName>
+                        </configuration>
+                    </execution>
+		    
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
